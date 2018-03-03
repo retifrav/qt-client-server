@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>BetterButton.qml</file>
+        <file>LayoutSection.qml</file>
+    </qresource>
+</RCC>

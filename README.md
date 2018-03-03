@@ -1,6 +1,6 @@
 # Client-Server
 
-Two GUI-applications, client and server, communicating over network via TCP.
+Two GUI-applications, client and server, communicating over network via TCP ([QTcpServer](http://doc.qt.io/qt-5/qtcpserver.html) and [QTcpSocket](http://doc.qt.io/qt-5/qtcpsocket.html)).
 
 Based on Qt and implemented in two ways:
 

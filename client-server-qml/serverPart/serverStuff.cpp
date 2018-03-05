@@ -30,16 +30,13 @@ void ServerStuff::readClient()
     //in.setVersion(QDataStream::Qt_5_10);
     for (;;)
     {
-        if (!m_nNextBlockSize) {
-                if (clientSocket->bytesAvailable() < sizeof(quint16)) {
-                break;
-            }
+        if (!m_nNextBlockSize)
+        {
+            if (clientSocket->bytesAvailable() < sizeof(quint16)) { break; }
             in >> m_nNextBlockSize;
         }
 
-        if (clientSocket->bytesAvailable() < m_nNextBlockSize) {
-            break;
-        }
+        if (clientSocket->bytesAvailable() < m_nNextBlockSize) { break; }
         QString str;
         in >> str;
 

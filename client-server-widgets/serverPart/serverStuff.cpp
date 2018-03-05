@@ -32,15 +32,11 @@ void ServerStuff::readClient()
     for (;;)
     {
         if (!m_nNextBlockSize) {
-                if (clientSocket->bytesAvailable() < sizeof(quint16)) {
-                break;
-            }
+                if (clientSocket->bytesAvailable() < sizeof(quint16)) { break; }
             in >> m_nNextBlockSize;
         }
 
-        if (clientSocket->bytesAvailable() < m_nNextBlockSize) {
-            break;
-        }
+        if (clientSocket->bytesAvailable() < m_nNextBlockSize) { break; }
         QString str;
         in >> str;
 

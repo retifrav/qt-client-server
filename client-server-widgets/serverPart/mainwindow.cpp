@@ -8,9 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     server = new ServerStuff(this);
-    connect(server, &ServerStuff::gotNewMesssage, this, &MainWindow::gotNewMesssage);
-    connect(server->tcpServer, &QTcpServer::newConnection, this, &MainWindow::smbConnectedToServer);
-    connect(server, &ServerStuff::smbDisconnected, this, &MainWindow::smbDisconnectedFromServer);
+    connect(server, &ServerStuff::gotNewMesssage,
+            this, &MainWindow::gotNewMesssage);
+    connect(server->tcpServer, &QTcpServer::newConnection,
+            this, &MainWindow::smbConnectedToServer);
+    connect(server, &ServerStuff::smbDisconnected,
+            this, &MainWindow::smbDisconnectedFromServer);
 }
 
 MainWindow::~MainWindow()

@@ -7,16 +7,16 @@ ClientStuff::ClientStuff(
         ) : QObject(parent), m_nNextBlockSize(0)
 {
     status = false;
-    tcpSocket = new QTcpSocket(this);
 
     host = hostAddress;
     port = portNumber;
 
+    tcpSocket = new QTcpSocket(this);
+    connect(tcpSocket, &QTcpSocket::disconnected, this, &ClientStuff::closeConnection);
+
     timeoutTimer = new QTimer();
     timeoutTimer->setSingleShot(true);
     connect(timeoutTimer, &QTimer::timeout, this, &ClientStuff::connectionTimeout);
-
-    connect(tcpSocket, &QTcpSocket::disconnected, this, &ClientStuff::closeConnection);
 }
 
 void ClientStuff::connect2host()

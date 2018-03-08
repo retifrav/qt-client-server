@@ -10,19 +10,22 @@ Window {
     minimumWidth: 500
     height: 450
     minimumHeight: 200
-    title: qsTr("Client")
+    title: "Client"
     color: "#CED0D4"
 
     Backend {
         id: backend
 
         onStatusChanged: {
+            //console.log(currentStatus);
             ti.append(addMsg(newStatus));
-            status.text = newStatus;
             if (currentStatus !== true)
             {
                 btn_connect.enabled = true;
             }
+        }
+        onSomeMessage: {
+            ti.append(addMsg(msg));
         }
         onSomeError: {
             ti.append(addMsg("Error! " + err));
@@ -31,9 +34,6 @@ Window {
                 backend.disconnectClicked();
             }
             btn_connect.enabled = true;
-        }
-        onSomeMessage: {
-            ti.append(addMsg(msg));
         }
     }
 
@@ -49,7 +49,7 @@ Window {
             Text {
                 id: status
                 anchors.centerIn: parent
-                text: "DISCONNECTED"
+                text: backend.currentStatus ? "CONNECTED" : "DISCONNECTED"
                 font.weight: Font.Bold
             }
         }

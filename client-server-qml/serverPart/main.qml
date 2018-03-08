@@ -10,7 +10,7 @@ Window {
     minimumWidth: 500
     height: 450
     minimumHeight: 200
-    title: qsTr("Server")
+    title: "Server"
     color: "#CED0D4"
 
     Backend {
